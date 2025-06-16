@@ -189,7 +189,7 @@ histdb-detail(){
     array[3]=$(echo "\033[33m${array[3]}\033[0m")
   fi
 
-  printf "\033[1mLast run\033[0m\n\nTime:      %s\nStatus:    %s\nDuration:  %s sec.\nHost:      %s\nDirectory: %s\nSessionid: %s\nCommand id: %s\nCommand:\n\n" ${array[0]}  ${array[1]}  ${array[2]}  ${array[3]} ${array[4]} ${array[5]} ${array[6]} ${array[7]}
+  printf "\033[1mLast run\033[0m\nTime:      %s\nStatus:    %s\nDuration:  %s sec.\nHost:      %s\nDirectory: %s\nSessionid: %s\nCommand id: %s\nCommand:\n\n" ${array[0]}  ${array[1]}  ${array[2]}  ${array[3]} ${array[4]} ${array[5]} ${array[6]} ${array[7]}
   echo "${array[8,-1]}"
 }
 
@@ -280,9 +280,9 @@ histdb-fzf-widget() {
       --header='${typ}${NL}${switchhints}${NL}―――――――――――――――――――――――――' --delimiter=' '
       -n2.. --with-nth=2..
       --tiebreak=index --expect='esc,ctrl-r,f1,f2,f3,f4,f5'
-      --bind 'ctrl-d:page-down,ctrl-u:page-up'
       --print-query
-      --preview='source ${FZF_HISTDB_FILE}; histdb-detail ${HISTDB_FILE} {1}' --preview-window=right:50%:wrap
+      --preview='source ${FZF_HISTDB_FILE}; histdb-detail ${HISTDB_FILE} {1}' --preview-window=down,50%,border-horizontal,noborder
+      --tmux 70%
       --no-hscroll
       --query='${query}' +m"
 
